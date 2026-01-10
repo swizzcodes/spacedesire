@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!gsap || !ScrollTrigger) return;
 
   gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(ScrollToPlugin);
+
 
   const amts = document.getElementById("amts");
   const amtsCloser = document.getElementById("amts_b2");
@@ -11,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxImg = document.getElementById("lb-img");
   const closeBtn = document.querySelector(".lb-close");
   const box = document.querySelector(".image_box");
-  const sections = document.querySelectorAll('.section_2, .section_3, .section_4, .section_5, .parent, .more_features_section, .form_section');
+  const sections = document.querySelectorAll('.section_2, .section_3, .section_4, .section_5, .parent, .more_features_section, .form_section, .contact_box');
 
   if (amts && amtsCloser) {
     amtsCloser.addEventListener("click", () => amts.style.display = "none");
@@ -135,6 +137,20 @@ document.addEventListener("DOMContentLoaded", () => {
     .finally(() => {
       submitBtn.disabled = false;
       submitBtn.innerText = "Get free estimate now";
+    });
+  });
+});
+document.querySelectorAll('#rmb1, #rmb2').forEach(btn => {
+  btn.addEventListener('click', function () {
+    const targetSelector = this.dataset.target;
+    const target = document.querySelector(targetSelector);
+    if (!target) return;
+
+    // Scroll so the top of the section is visible, with 100px offset from top
+    gsap.to(window, {
+      duration: 1.2,
+      scrollTo: { y: target, offsetY: 100 },
+      ease: "power3.out"
     });
   });
 });

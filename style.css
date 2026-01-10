@@ -241,9 +241,14 @@
      display: -webkit-box;
      -webkit-box-orient: vertical;
      -webkit-line-clamp: 7;
-     overflow: hidden;
      text-overflow: ellipsis;
+     overflow:hidden;
 }
+.parent {
+  overflow: visible;
+  height: auto;
+}
+
  .section_2{
      text-align: center;
      display: flex;
@@ -664,7 +669,7 @@
          height:77vh;
     }
      .slide_title{
-         font-size:45px;
+         font-size:35px;
     }
      .slide_definition{
          font-size:17px;
@@ -677,6 +682,7 @@
     }
 }
  @media (min-width: 321px) and (max-width: 375px) {
+        
      .form_boxes{
          width: 100% !important;
     }
@@ -695,10 +701,10 @@
      body{
     }
      .slide_title{
-         font-size:45px;
+         font-size:40px;
     }
      .slide_definition{
-         font-size:23px;
+         font-size:18px;
     }
      .amts{
          height:10vh;
@@ -723,8 +729,7 @@
      .card_wrapper{
          flex-direction: column !important;
     }
-     body{
-    }
+
      .slide_title{
          font-size:55px;
     }
@@ -734,6 +739,7 @@
      .def_pack button{
          font-size:20px;
     }
+
      .slide_definition{
          font-size:25px;
     }
@@ -1221,6 +1227,9 @@
      .cards_collection{
          flex-direction: column !important;
     }
+    .def_pack{
+        width: 1300px !important;
+    }
 }
  @media (min-width: 1441px) {
      .hide-for-mobile{
@@ -1534,8 +1543,11 @@
      flex-direction: column;
      text-align: left;
      font-weight: bold;
+     height: 100% !important;
      gap:20px;
+     justify-content: space-between;
 }
+
  .form_definitions{
      width:60%;
      height: 100%;

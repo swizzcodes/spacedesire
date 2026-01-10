@@ -24,6 +24,7 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/css/intlTelInput.css">
       <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19/build/js/intlTelInput.min.js"></script>
+      <script src="assets/scrollToPlugin.js"></script>
       <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Homemade+Apple&family=Jersey+10&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Momo+Signature&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Momo+Signature&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&display=swap" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Jersey+10&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Momo+Signature&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
@@ -67,16 +68,17 @@
                         </picture>
                      </div>
                      <div class="def_pack">
-                        <h1 class="merriweather-bold  slide_title"><span class="merriweather-bold">Design Your Own</span>
-                           <span class="pacifico-regular">Dream Space</span>
-                        </h1>
-                        <p class="slide_definition merriweather-bold">
-                           <span class=" merriweather-bold">Create a stylish and</span>
-                           <span class=" merriweather-bold">comfortable home that</span>
-                           <span class=" merriweather-bold">reflects your</span>
-                           <span class=" merriweather-bold">personality.</span>
-                        </p>
-                        <button type="button" class="readmorebutton">Explore now</button>
+                        <pre class="slide_title merriweather-bold">
+Smart Homes 
+<span class="pacifico-regular">End to End
+For You</span>
+</pre>
+                        <pre class="slide_definition merriweather-bold">
+From concept and design
+to execution and finishing,
+we manage seamlessly.
+</pre>
+                        <button type="button" class="readmorebutton" id="rmb1" data-target="#etesection">Explore now</button>
                      </div>
                   </div>
                </div>
@@ -91,12 +93,16 @@
                         </picture>
                      </div>
                      <div class="def_pack">
-                        <h1 class="merriweather-bold slide_title">Craft Spaces That <span class="pacifico-regular">Inspire Living</span></h1>
-                        <p class="slide_definition merriweather-bold">
-                           <span class="merriweather-bold">Thoughtfully designed interiors</span>
-                           <span class="merriweather-bold">combining comfort, and</span>
-                           <span class="merriweather-bold">function.</span>
-                        </p>
+                        <pre class="slide_title merriweather-bold">
+Craft spaces that
+<span class="pacifico-regular">Inspire living 
+Life</span>
+</pre>
+                        <pre class="merriweather-bold">
+Thoughtfully designed interiors
+combining comfort, and
+function.
+</pre>
                         <button type="button" class="readmorebutton">Explore now</button>
                      </div>
                   </div>
@@ -112,13 +118,17 @@
                         </picture>
                      </div>
                      <div class="def_pack">
-                        <h1 class="merriweather-bold slide_title"> <span class="merriweather-bold">Where Art Meets </span>
-                           <span class="pacifico-regular">Comfy Design</span>
-                        </h1>
-                        <p class="slide_definition merriweather-bold">
-                           Elevating everyday living through beautiful, warm, and purposeful interiors.
-                        </p>
-                        <button type="button" class="readmorebutton">Explore now</button>
+                        <pre class="slide_title merriweather-bold">
+Modular Kitchen
+<span class="pacifico-regular">Designed for 
+India</span>
+</pre>
+                        <pre class="merriweather-bold slide_definition">
+Smart layouts, intelligent storage,
+and elegant finishes for modern
+Indian kitchens.
+</pre>
+                        <button type="button" class="readmorebutton" id="rmb2" data-target=".features_collection">Explore now</button>
                      </div>
                   </div>
                </div>
@@ -213,9 +223,9 @@
             </div>
          </div>
       </div>
-      <div class="section_3">
+      <div class="section_3" id="etesection">
          <div class="interior_section">
-            <h2 class="momo-signature-regular section_heading">End-to-End Interior Solutions</h2>
+            <h2 class="momo-signature-regular section_heading">End to End Interior Solutions</h2>
             <div class="sep_line"></div>
             <div class="specialities_collection">
                <p class="etetag hide-for-mobile">
@@ -397,25 +407,19 @@
                </div>
             </div>
             <form class="form_boxes" id="estimateForm" method="POST" action="send-mail.php">
-
-  <div class="names">
-    <input type="text" name="first_name" placeholder="First name" required>
-    <input type="text" name="last_name" placeholder="Last name" required>
-  </div>
-
-  <input type="email" name="email" placeholder="Email">
-  <input type="tel" name="phone" id="phone" placeholder="Mobile number" required>
-  <input type="text" name="location" placeholder="City / Location">
-
-  <textarea name="message" placeholder="Tell us about your requirement" rows="5"></textarea>
-
-  <button type="submit" class="estimator" id="submitBtn">
-    Get free estimate now
-  </button>
-
-  <p id="formStatus" class="hide-msg"></p>
-</form>
-
+               <div class="names">
+                  <input type="text" name="first_name" placeholder="First name" required>
+                  <input type="text" name="last_name" placeholder="Last name" required>
+               </div>
+               <input type="email" name="email" placeholder="Email">
+               <input type="tel" name="phone" id="phone" placeholder="Mobile number" required>
+               <input type="text" name="location" placeholder="City / Location">
+               <textarea name="message" placeholder="Tell us about your requirement" rows="5"></textarea>
+               <button type="submit" class="estimator" id="submitBtn">
+               Get free estimate now
+               </button>
+               <p id="formStatus" class="hide-msg"></p>
+            </form>
          </div>
       </div>
       <div class="section_5">
@@ -472,8 +476,9 @@
          <div class="contact_data">
             <span class="material-icons">location_on</span>
             <p class="">No 110, KK Nagar,
-Kathiyavadi 632509
-Ranipet District</p>
+               Kathiyavadi 632509
+               Ranipet District
+            </p>
          </div>
          <p class="text-center copyright-text">&copy; Space Desires, All Rights Reserved Designed by <span class="bold">Nexora Solutions</span></p>
       </div>
