@@ -6,6 +6,12 @@
     .wrapper_1, .wrapper_2, .form_boxes{
         width: 100%;
     }
+    .slide_title{
+        font-size:35px;
+    }
+    .slide_definition{
+        font-size: 15px;
+    }
 }
 
 /* Small devices (phones, 480px – 575px) */
@@ -16,6 +22,7 @@
       .wrapper_1, .wrapper_2, .form_boxe{
         width: 100%;
     }
+    
 }
 
 /* Medium devices (large phones, tablets portrait, 576px – 767px) */
@@ -24,6 +31,207 @@
         display: none;
     }
       .wrapper_1, .wrapper_2, .form_boxe{
+        width: 100%;
+    }
+  .amts{
+    height:10vh;
+    padding: 40px;
+  }
+  .amts_b1, .amts_b2{
+    font-size:20px;
+  }
+  .logo_area{
+    padding: 40px;
+    height:15vh;
+  }
+  .slide_1{
+    height: 75vh;
+  }
+  .slide_title{
+    font-size:80px;
+  }
+  .slide_definition{
+    font-size:30px;
+  }
+  .readmorebutton, .classyButton{
+    font-size:30px;
+  }
+  .classyButton{
+    font-size:18px !important; 
+  }
+        .reviewBox{
+         padding:60px;
+    }
+     .desktop_menu{
+         font-size: 15px;
+    }
+     .section_2{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         align-content: center;
+    }
+     .review_collections{
+         display: flex;
+         flex-direction: row !important;
+         gap:20px;
+    }
+     .reviewBox{
+         height: auto;
+    }
+     .etetag{
+         display: block !important;
+    }
+     .features_collection{
+         display: flex;
+         flex-direction: column;
+         gap:20px;
+    }
+     .more_features_section{
+         display: flex;
+         flex-direction: column;
+         gap:20px;
+    }
+     .feature{
+         display: flex !important;
+         justify-content: center;
+         align-items: center;
+         align-content: center;
+         flex-direction: row !important;
+         text-align: left !important;
+    }
+     .feature_tag_definition{
+         font-weight: normal;
+    }
+     .left_section_1, .right_section_2{
+         width:30%;
+         height:auto;
+         display: block !important;
+    }
+     .right_section_1, .left_section_2{
+         display: flex;
+         width:70%;
+         flex-direction: column;
+         gap:20px;
+    }
+     .feature_image{
+         object-fit: cover;
+         aspect-ratio: 16 / 9;
+         width: 100%;
+         height: 100%;
+         max-height:100%;
+    }
+     .feature_tag_2{
+         font-weight: bold;
+         font-size:24px;
+         text-align: left !important;
+         align-self: left !important;
+    }
+     .feature_tag{
+         display: none;
+    }
+     .right_section_1{
+         width:70%;
+    }
+     .spec_icons{
+         height:40px;
+    }
+     .cards_collection{
+         display: flex;
+         justify-content: space-between;
+         flex-direction: column !important;
+    }
+     .specialities_collection{
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         align-content: center;
+    }
+     .etetag{
+         display: block !important;
+    }
+     .specialities{
+         width:50%;
+    }
+     .etetag{
+         width:50%;
+    }
+     .section_heading, .intro, .etetag{
+         text-align:left;
+    }
+     .video-wrapper {
+         width: auto;
+         max-width: 500%;
+         border-radius: 70px;
+         height: auto;
+    }
+     .welcome_video {
+         width: 100% !important;
+         height: auto !important;
+    }
+     .sep_line{
+         display: none;
+    }
+     .card{
+         width:100%;
+         height:100%;
+         min-height:200px;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         align-content: center;
+    }
+     .desktop_menu{
+         display: flex;
+         gap:20px;
+         font-weight: bold;
+    }
+     .section_2{
+         flex-direction: row;
+    }
+     .menu_area{
+         width:fit-content;
+    }
+    .desktop_menu_item{
+        font-size:18px !important; 
+    }
+     .classyButton{
+         font-size:15px;
+         right:0 !important;
+         width:fit-content;
+    }
+     .video-wrapper{
+         width:100%;
+         justify-content: center;
+         display: flex;
+         align-items: center;
+         align-content: center;
+         background-color: white !important;
+    }
+     .card{
+         width:30%;
+    }
+     .card_definition{
+         width:70%;
+    }
+     .hide-for-mobile{
+         display: flex !important;
+    }
+     .cards_collection{
+         flex-direction: column !important;
+    }
+    .def_pack{
+        width: 100% !important;
+        padding: 40px;
+        gap:40px;
+    }
+    .hide-for-mobile-2{
+        display: none !important;
+    }
+    .form_boxes{
+        width: 100%;
+    }
+    .slide_1{
         width: 100%;
     }
  }
