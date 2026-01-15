@@ -18,6 +18,7 @@
       <link href="https://vjs.zencdn.net/8.23.4/video-js.css" rel="stylesheet" />
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Homemade+Apple&family=Jersey+10&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Momo+Signature&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Pacifico&family=Poiret+One&family=Sacramento&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="assets/fa.css">
       <script src="https://vjs.zencdn.net/8.23.4/video.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
@@ -46,13 +47,13 @@
             <img src="assets/logo.png">
             <div class="menu_area">
                <div class="desktop_menu">
-                  <p class="desktop_menu_item merriweather-bold">Home</p>
-                  <p class="desktop_menu_item merriweather-bold">About</p>
-                  <p class="desktop_menu_item merriweather-bold">Services</p>
-                  <p class="desktop_menu_item merriweather-bold">Estimate</p>
+                  <p class="desktop_menu_item">Home</p>
+                  <p class="desktop_menu_item">About</p>
+                  <p class="desktop_menu_item">Services<span class="material-icons">arrow_drop_down</span></p>
+                  <p class="desktop_menu_item">Estimate</p>
                </div>
-               <button type="button" class="classyButton merriweather-bold">
-               <span class="bold merriweather-bold ">Contact</span>
+               <button type="button" class="classyButton">
+               <span class="bold">Contact</span>
                </button>
             </div>
          </div>
@@ -137,7 +138,7 @@ Indian kitchens.
          </div>
          <div class="section_2">
             <div class="wrapper_1">
-               <h2 class="momo-signature-regular section_heading">From Vision to Perfection</h2>
+               <h2 class="pacifico-regular section_heading">From Vision to Perfection</h2>
                <div class="sep_line"></div>
                <p class="intro">Established in 2023, Space Desire Interiors began its journey with a humble factory near Vellore, specializing in customized bedroom furniture and small scale interior works. Guided by dedication, skilled craftsmanship, and a passion for thoughtful design, the company quickly expanded its presence across the Vellore region and the entire former North Arcot District, later reaching the dynamic city of Bengaluru and the culturally rich city of Chennai. Within a short span, we have successfully completed more than 30 residential projects, earning the trust and satisfaction of homeowners who appreciate both functionality and refined aesthetics. Every project, regardless of size, is executed with careful attention to detail, complete material transparency, and a strong commitment to timely delivery. Whether you dream of a modern kitchen, a warm and inviting living space, or a complete home transformation, Space Desire Interiors stands as a reliable partner dedicated to turning your vision into reality.</p>
             </div>
@@ -163,11 +164,11 @@ Indian kitchens.
             <button type="button" class="meet_designer_btn">Meet a Designer</button>
          </div>
          <div class="section_3">
-            <h2 class="momo-signature-regular section_heading">Why people choose us?</h2>
+            <h2 class="pacifico-regular section_heading">Why people choose us?</h2>
             <div class="sep_line"></div>
             <div class="cards_collection">
                <!-- CARD 1 : 10+ Years Experience -->
-               <div class="card_wrapper">
+               <div class="card_wrapper" id="cw">
                   <div class="card_definition hide-for-mobile">
                      <p class="feature_tag_2 merriweather-bold">Proven Expertise</p>
                      <p>
@@ -176,12 +177,12 @@ Indian kitchens.
                   </div>
                   <div class="card" id="c1">
                      <span class="material-icons cards_icon">precision_manufacturing</span>
-                     <p class="numbering jersey-10-normal">10+ Years of Industry Experience</p>
+                     <p class="numbering jersey-10-normal"><span id="years" class="jersey-10-normal">10</span>+ Years of Industry Experience</p>
                   </div>
                </div>
                <br>
                <!-- CARD 2 : Cities Served -->
-               <div class="card_wrapper">
+               <div class="card_wrapper" id="cw"2>
                   <div class="card_definition hide-for-mobile">
                      <p class="feature_tag_2 merriweather-bold">Expanding Our Presence</p>
                      <p>
@@ -190,12 +191,12 @@ Indian kitchens.
                   </div>
                   <div class="card" id="c2">
                      <span class="material-icons cards_icon">location_city</span>
-                     <p class="numbering jersey-10-normal">3+ Cities<br> Served</p>
+                     <p class="numbering jersey-10-normal"><span id='cities' class="jersey-10-normal">3</span>+ Cities<br> Served</p>
                   </div>
                </div>
                <br>
                <!-- CARD 3 : Client Satisfaction -->
-               <div class="card_wrapper">
+               <div class="card_wrapper" id="cw3">
                   <div class="card_definition hide-for-mobile">
                      <p class="feature_tag_2 merriweather-bold">Client First Commitment</p>
                      <p>
@@ -204,12 +205,12 @@ Indian kitchens.
                   </div>
                   <div class="card" id="c3">
                      <span class="material-icons cards_icon">sentiment_very_satisfied</span>
-                     <p class="numbering jersey-10-normal">100% Client <br>Satisfaction</p>
+                     <p class="numbering jersey-10-normal"><span id="percent" class="jersey-10-normal">100</span>% Client <br>Satisfaction</p>
                   </div>
                </div>
                <br>
                <!-- CARD 4 : Projects Completed -->
-               <div class="card_wrapper">
+               <div class="card_wrapper" id="cw4">
                   <div class="card_definition hide-for-mobile">
                      <p class="feature_tag_2 merriweather-bold">Delivered With Precision</p>
                      <p>
@@ -218,7 +219,7 @@ Indian kitchens.
                   </div>
                   <div class="card" id="c4">
                      <span class="material-icons cards_icon">task_alt</span>
-                     <p class="numbering jersey-10-normal">30+ Projects <br> Completed</p>
+                     <p class="numbering jersey-10-normal"><span id="projects" class="jersey-10-normal">30</span>+ Projects <br> Completed</p>
                   </div>
                </div>
             </div>
@@ -226,7 +227,7 @@ Indian kitchens.
       </div>
       <div class="section_3" id="etesection">
          <div class="interior_section">
-            <h2 class="momo-signature-regular section_heading">End to End Interior Solutions</h2>
+            <h2 class="pacifico-regular section_heading">End to End Interior Solutions</h2>
             <div class="sep_line"></div>
             <div class="specialities_collection">
                <p class="etetag hide-for-mobile">
@@ -296,8 +297,22 @@ Indian kitchens.
             </div>
          </div>
       </div>
+      <div class="confusion_section">
+         <div class="confusion_box">
+            <img src="assets/confused.png" class="confused_friends">
+            <div class="confusion_clearer">
+               <p class="pacifico-regular section_heading">Have any questions?</p>
+               <p class="merriweather-bold">Confused between Styles, Layouts and Costs?</p>
+               <pre>Choosing the right design can feel overwhelming
+Our designers simplify every decision
+From layout planning to cost clarity</pre>
+               <button type="button">Meet a Designer</button>
+            </div>
+            <img src="assets/offer.png" class="confused_friends">
+         </div>
+      </div>
       <div class="more_features_section">
-         <h2 class="momo-signature-regular section_heading">Modular Kitchens Designed for Indian Homes</h2>
+         <h2 class="pacifico-regular section_heading">Modular Kitchens Designed for Indian Homes</h2>
          <div class="sep_line"></div>
          <div class="features_collection">
             <div class="feature">
@@ -368,7 +383,7 @@ Indian kitchens.
          </div>
       </div>
       <div class="section_4">
-         <h2 class="momo-signature-regular section_heading">What Our Clients Say</h2>
+         <h2 class="pacifico-regular section_heading">What Our Clients Say</h2>
          <div class="sep_line"></div>
          <div class="review_collections">
             <div class='reviewBox'>
@@ -398,7 +413,6 @@ Indian kitchens.
       </div>
       </div>
       <div class="form_section">
-         <h2 class="momo-signature-regular section_heading">Contact us</h2>
          <div class="form_body">
             <div class="form_definitions hide-for-mobile hide-for-mobile-2">
                <p class="momo-signature-regular">Get in touch with our team</p>
@@ -424,7 +438,7 @@ Indian kitchens.
          </div>
       </div>
       <div class="section_5">
-         <h2 class="momo-signature-regular section_heading">Our Gallery</h2>
+         <h2 class="pacifico-regular section_heading">Our Gallery</h2>
          <div class="sep_line"></div>
          <div class="marquee">
             <div class="image_box">
@@ -464,24 +478,63 @@ Indian kitchens.
          </div>
       </div>
       <div class="contact_box">
-         <p class="momo-signature-regular section_heading">Contact us</p>
-         <p class="merriweather-bold">Get In Touch</p>
-         <div class="contact_data">
-            <span class="material-icons">email</span>
-            <p class="">sales@spacedesire.in</p>
+         <div class="contact_collections">
+            <div class="cc1">
+               <img src="assets/logo.png" class="contact_us_logo">
+               <p class="cc1_1">
+                  Designing and delivering spaces that reflect your personality, lifestyle, and dreams.
+               </p>
+               <div class="social_media_quicklinks">
+                  <a href="https://www.instagram.com/space_desire_interiors/" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-instagram fa-lg"></i>
+                  </a>
+                  <i class="fa-brands fa-facebook fa-lg"></i>
+                  <a href="https://www.linkedin.com/company/space-desire-interiors/posts/?feedView=all" target="_blank" rel="noopener noreferrer">
+                  <i class="fa-brands fa-linkedin fa-lg"></i>
+                  </a>
+                  <i class="fa-brands fa-twitter fa-lg"></i>
+                  <i class="fa-brands fa-youtube fa-lg"></i>
+               </div>
+            </div>
+            <div class="cc2">
+               <p class="merriweather-bold bold contact_heading">Get In Touch</p>
+               <div class="contact_data">
+                  <i class="fa-solid fa-envelope"></i>
+                  <p class="">sales@spacedesire.in</p>
+               </div>
+               <div class="contact_data">
+                  <i class="fa-solid fa-phone"></i>
+                  <p class="">91 95383 44570</p>
+               </div>
+               <div class="contact_data">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p class="">No 110, KK Nagar,
+                     Kathiyavadi 632509
+                     Ranipet District
+                  </p>
+               </div>
+            </div>
+            <div class="cc3">
+               <p class="merriweather-bold bold contact_heading">Our Popular Links</p>
+               <div class="contact_data">
+                  <i class="fa-solid fa-caret-right"></i>
+                  <p class="">Home</p>
+               </div>
+               <div class="contact_data">
+                  <i class="fa-solid fa-caret-right"></i>
+                  <p class="">About</p>
+               </div>
+               <div class="contact_data">
+                  <i class="fa-solid fa-caret-right"></i>
+                  <p class="">Privacy Policy</p>
+               </div>
+                <div class="contact_data">
+                  <i class="fa-solid fa-caret-right"></i>
+                  <p class="">Terms & Conditions</p>
+               </div>
+            </div>
+            <!--<p class="copyright-text">&copy; Space Desires, All Rights Reserved Designed by <span class="bold">Nexora Solutions</span></p>-->
          </div>
-         <div class="contact_data">
-            <span class="material-icons">phone</span>
-            <p class="">+91 95383 44570</p>
-         </div>
-         <div class="contact_data">
-            <span class="material-icons">location_on</span>
-            <p class="">No 110, KK Nagar,
-               Kathiyavadi 632509
-               Ranipet District
-            </p>
-         </div>
-         <p class="copyright-text">&copy; Space Desires, All Rights Reserved Designed by <span class="bold">Nexora Solutions</span></p>
       </div>
       </div>
       <script src="assets/swiper.js"></script>
