@@ -1,18 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* ===============================
-     GSAP PLUGINS CHECK & REGISTER
-  =============================== */
-  if (!window.gsap || !window.ScrollTrigger) return;
-
-  gsap.registerPlugin(ScrollTrigger);
-  if (window.ScrollToPlugin) gsap.registerPlugin(ScrollToPlugin);
-
-  /* ===============================
-     DOM ELEMENTS
-  =============================== */
   const amts = document.getElementById("amts");
   const amtsCloser = document.getElementById("amts_b2");
+
 
   const s3_image = document.getElementById("sec3img");
 
@@ -25,19 +15,45 @@ document.addEventListener("DOMContentLoaded", () => {
   const marquee = document.querySelector(".marquee");
 
   const sections = document.querySelectorAll(
-    '.section_2, #cw, #cw2, #cw3, #cw4, .section_4, .section_5, .parent, .more_features_section, .form_section, .contact_box'
+    '.section_2, #cw, #cw2, #cw3, #cw4, .section_3, .section_4, .section_5, .parent, .confusion_box, .more_features_section, .f1, .f2, .f3, .f4, .f5, .rb1, .rb2, .section_4, .form_section, .contact_box'
   );
 
-  /* ===============================
-     AMTS CLOSE BUTTON
-  =============================== */
   if (amts && amtsCloser) {
     amtsCloser.addEventListener("click", () => amts.style.display = "none");
   }
 
-  /* ===============================
-     SWIPER
-  =============================== */
+
+const madParent = document.querySelector(".center_holder");
+const madContent = document.querySelector(".mad_content");
+const madCloser = document.getElementById("madCloser");
+
+if (madCloser && madContent && window.gsap) {
+  madCloser.addEventListener("click", () => {
+    gsap.to(madContent, {
+      duration: 0.4,
+      scale: 0.7,
+      opacity: 0,
+      ease: "back.in(1.7)",
+      onComplete: () => {
+        madParent.style.display = "none";
+        // Do NOT reset transform or opacity here
+      }
+    });
+  });
+}
+
+document.querySelector(".mad").addEventListener("click", () => {
+  madParent.style.setProperty('display', 'flex', 'important');
+
+  // Animate pop-in
+  gsap.fromTo(
+    madContent,
+    { scale: 0.7, opacity: 0 },
+    { duration: 0.4, scale: 1, opacity: 1, ease: "back.out(1.7)" }
+  );
+});
+
+
   if (document.querySelector(".swiper")) {
     new Swiper(".swiper", {
       loop: true,
@@ -51,26 +67,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===============================
-     SCROLL FADE ANIMATIONS
-  =============================== */
-  sections.forEach(section => {
-    gsap.from(section, {
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      },
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      ease: "power2.out"
-    });
-  });
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (window.ScrollToPlugin) gsap.registerPlugin(ScrollToPlugin);
 
-  /* ===============================
-     SECTION 3 IMAGE ROTATION
-  =============================== */
+    sections.forEach(section => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "power2.out"
+      });
+    });
+  }
+
   const s3_imgs = [
     "assets/section_3.png",
     "assets/s3_2.png",
@@ -81,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let imgIndex = 0;
   s3_imgs.forEach(src => new Image().src = src);
 
-  if (s3_image) {
+  if (s3_image && window.gsap) {
     setInterval(() => {
       gsap.to(s3_image, {
         opacity: 0.85,
@@ -100,9 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 3000);
   }
 
-  /* ===============================
-     LIGHTBOX
-  =============================== */
   images.forEach(img => {
     img.addEventListener("click", () => {
       if (!lightbox || !lightboxImg) return;
@@ -119,22 +131,17 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
+
   if (lightbox) {
     lightbox.addEventListener("click", e => {
       if (e.target === lightbox) closeLightbox();
     });
   }
 
-  /* ===============================
-     MARQUEE (FIXED)
-  =============================== */
-  if (box) {
+  if (box && window.gsap) {
     const imgElements = box.querySelectorAll("img");
     let totalWidth = 0;
-
-    imgElements.forEach(img => {
-      totalWidth += img.offsetWidth + 20;
-    });
+    imgElements.forEach(img => totalWidth += img.offsetWidth + 20);
 
     const marqueeTween = gsap.to(box, {
       x: `-${totalWidth}px`,
@@ -152,9 +159,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  /* ===============================
-     PHONE INPUT
-  =============================== */
   const phoneInput = document.getElementById("phone");
   if (phoneInput && window.intlTelInput) {
     window.intlTelInput(phoneInput, {
@@ -165,9 +169,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ===============================
-     FORM SUBMISSION
-  =============================== */
   const form = document.getElementById("estimateForm");
   const statusText = document.getElementById("formStatus");
   const submitBtn = document.getElementById("submitBtn");
@@ -175,26 +176,20 @@ document.addEventListener("DOMContentLoaded", () => {
   if (form && submitBtn && statusText) {
     form.addEventListener("submit", e => {
       e.preventDefault();
-
       submitBtn.disabled = true;
       submitBtn.innerText = "Sending...";
       statusText.innerText = "";
 
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form)
-      })
+      fetch(form.action, { method: "POST", body: new FormData(form) })
         .then(res => res.text())
         .then(result => {
           statusText.style.display = "block";
           if (result.trim() === "success") {
-            statusText.innerText =
-              "Thank you! Your estimate request has been sent successfully.";
+            statusText.innerText = "Thank you! Your estimate request has been sent successfully.";
             statusText.style.color = "green";
             form.reset();
           } else {
-            statusText.innerText =
-              "Something went wrong. Please try again later.";
+            statusText.innerText = "Something went wrong. Please try again later.";
             statusText.style.color = "red";
           }
         })
@@ -209,15 +204,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
   }
+
 });
 
-/* ===============================
-   SCROLL BUTTONS
-=============================== */
 document.querySelectorAll('#rmb1, #rmb2').forEach(btn => {
   btn.addEventListener('click', function () {
     const target = document.querySelector(this.dataset.target);
-    if (!target) return;
+    if (!target || !window.gsap) return;
 
     gsap.to(window, {
       duration: 1.2,
@@ -227,9 +220,6 @@ document.querySelectorAll('#rmb1, #rmb2').forEach(btn => {
   });
 });
 
-/* ===============================
-   COUNTER ANIMATIONS
-=============================== */
 const counters = [
   { el: document.getElementById("years"), value: 10 },
   { el: document.getElementById("cities"), value: 3 },
@@ -238,7 +228,7 @@ const counters = [
 ];
 
 counters.forEach(({ el, value }) => {
-  if (!el) return;
+  if (!el || !window.gsap || !window.ScrollTrigger) return;
 
   gsap.fromTo(el,
     { innerText: 0 },
