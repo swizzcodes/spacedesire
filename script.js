@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+  document.querySelector(".loader_holder").style.display='none';
   const amts = document.getElementById("amts");
   const amtsCloser = document.getElementById("amts_b2");
-
 
   const s3_image = document.getElementById("sec3img");
 
@@ -22,6 +22,9 @@ document.addEventListener("DOMContentLoaded", () => {
     amtsCloser.addEventListener("click", () => amts.style.display = "none");
   }
 
+  document.querySelector(".estimator").addEventListener("click", ()=>{
+    document.querySelector("#loader_holder").style.display='flex';
+  })
 
 const madParent = document.querySelector(".center_holder");
 const madContent = document.querySelector(".mad_content");
@@ -36,7 +39,7 @@ if (madCloser && madContent && window.gsap) {
       ease: "back.in(1.7)",
       onComplete: () => {
         madParent.style.display = "none";
-        // Do NOT reset transform or opacity here
+
       }
     });
   });
@@ -45,14 +48,12 @@ if (madCloser && madContent && window.gsap) {
 document.querySelector(".mad").addEventListener("click", () => {
   madParent.style.setProperty('display', 'flex', 'important');
 
-  // Animate pop-in
   gsap.fromTo(
     madContent,
     { scale: 0.7, opacity: 0 },
     { duration: 0.4, scale: 1, opacity: 1, ease: "back.out(1.7)" }
   );
 });
-
 
   if (document.querySelector(".swiper")) {
     new Swiper(".swiper", {
@@ -69,6 +70,8 @@ document.querySelector(".mad").addEventListener("click", () => {
 
   if (window.gsap && window.ScrollTrigger) {
     gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(Draggable);
+
     if (window.ScrollToPlugin) gsap.registerPlugin(ScrollToPlugin);
 
     sections.forEach(section => {
@@ -115,29 +118,6 @@ document.querySelector(".mad").addEventListener("click", () => {
     }, 3000);
   }
 
-  images.forEach(img => {
-    img.addEventListener("click", () => {
-      if (!lightbox || !lightboxImg) return;
-      lightbox.style.display = "flex";
-      lightboxImg.src = img.src;
-      if (box) box.style.animationPlayState = "paused";
-    });
-  });
-
-  const closeLightbox = () => {
-    if (!lightbox) return;
-    lightbox.style.display = "none";
-    if (box) box.style.animationPlayState = "running";
-  };
-
-  if (closeBtn) closeBtn.addEventListener("click", closeLightbox);
-
-  if (lightbox) {
-    lightbox.addEventListener("click", e => {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
-
   if (box && window.gsap) {
     const imgElements = box.querySelectorAll("img");
     let totalWidth = 0;
@@ -180,18 +160,21 @@ document.querySelector(".mad").addEventListener("click", () => {
       submitBtn.innerText = "Sending...";
       statusText.innerText = "";
 
+      document.querySelector(".loader_holder").style.display='flex';
+
       fetch(form.action, { method: "POST", body: new FormData(form) })
         .then(res => res.text())
         .then(result => {
           statusText.style.display = "block";
           if (result.trim() === "success") {
-            statusText.innerText = "Thank you! Your estimate request has been sent successfully.";
+            statusText.innerText = "Thank you for reaching out. We will get in touch with you shortly.";
             statusText.style.color = "green";
             form.reset();
           } else {
             statusText.innerText = "Something went wrong. Please try again later.";
             statusText.style.color = "red";
           }
+
         })
         .catch(() => {
           statusText.style.display = "block";
@@ -201,13 +184,15 @@ document.querySelector(".mad").addEventListener("click", () => {
         .finally(() => {
           submitBtn.disabled = false;
           submitBtn.innerText = "Get free estimate now";
+                      document.querySelector(".loader_holder").style.display='none';
+
         });
     });
   }
 
 });
 
-document.querySelectorAll('#rmb1, #rmb2').forEach(btn => {
+document.querySelectorAll('#rmb1, #rmb2, #rmb1, #about_btn, #estimate_btn').forEach(btn => {
   btn.addEventListener('click', function () {
     const target = document.querySelector(this.dataset.target);
     if (!target || !window.gsap) return;
@@ -247,4 +232,73 @@ counters.forEach(({ el, value }) => {
       }
     }
   );
+
 });
+
+gsap.set(".estimation_caller", { y: "100%" });
+gsap.set("#whatsappBtn, #phoneBtn", { x: 100, autoAlpha: 0 });
+ScrollTrigger.create({
+  start: () => window.innerHeight, 
+
+  onEnter: () => {
+    gsap.to(".estimation_caller", { y: 0, duration: 0.4, ease: "power2.out" });
+    gsap.to("#whatsappBtn", { x: 0, autoAlpha: 1, duration: 0.5, ease: "power2.out" });
+    gsap.to("#phoneBtn", { x: 0, autoAlpha: 1, duration: 0.5, delay: 0.1, ease: "power2.out" });
+  },
+  onLeaveBack: () => {
+    gsap.to(".estimation_caller", { y: "100%", duration: 0.3, ease: "power2.in" });
+    gsap.to("#whatsappBtn", { x: 100, autoAlpha: 0, duration: 0.3, ease: "power2.in" });
+    gsap.to("#phoneBtn", { x: 100, autoAlpha: 0, duration: 0.3, ease: "power2.in" });
+  }
+});
+
+  ScrollTrigger.create({
+    start: () => window.innerHeight, 
+
+    onEnter: () => {
+      gsap.to(".estimation_caller", {
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out"
+      });
+    },
+    onLeaveBack: () => {
+      gsap.to(".estimation_caller", {
+        y: "100%",
+        duration: 0.3,
+        ease: "power2.in"
+      });
+    }
+  });
+
+   Draggable.create("#whatsappBtn", {
+    type: "y",                 
+
+    edgeResistance: 0.65,      
+
+    inertia: true              
+
+  });
+   Draggable.create("#phoneBtn", {
+    type: "y",                 
+
+    edgeResistance: 0.65,      
+
+    inertia: true              
+
+  });
+
+document.getElementById("whatsappBtn").addEventListener("click", function() {
+  const number = "919538344570"; 
+
+  const message = "Hello%2C%20Can%20I%20get%20more%20info%20on%20this%3F"; 
+
+  window.open(`https://wa.me/${number}?text=${message}`, "_blank");
+});
+
+document.getElementById("phoneBtn").addEventListener("click", function() {
+ const phoneNumber = "919538344570"; 
+
+  window.open(`tel:${phoneNumber}`);
+});
+

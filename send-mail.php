@@ -1,12 +1,5 @@
 <?php
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-require 'phpmailer/Exception.php';
-require 'phpmailer/PHPMailer.php';
-require 'phpmailer/SMTP.php';
-
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo "error";
     exit;
@@ -25,39 +18,28 @@ if (!$firstName || !$email || !$phone) {
     exit;
 }
 
-$mail = new PHPMailer(true);
+// Mail settings
+$to      = "sales@spacedesire.in";
+$subject = "New Free Estimate Request";
 
-try {
-    // SMTP configuration (cPanel)
-    $mail->isSMTP();
-    $mail->Host       = 'mail.spacedesires.in';
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'noreply@spacedesires.in';
-    $mail->Password   = 'EMAIL_PASSWORD_HERE';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 587;
+$body = "
+<h3>New Estimate Request</h3>
+<p><strong>Name:</strong> {$firstName} {$lastName}</p>
+<p><strong>Email:</strong> {$email}</p>
+<p><strong>Phone:</strong> {$phone}</p>
+<p><strong>Location:</strong> {$location}</p>
+<p><strong>Message:</strong><br>{$message}</p>
+";
 
-    // Headers
-    $mail->setFrom('noreply@spacedesires.in', 'Space Desire Interiors');
-    $mail->addAddress('niyazk@spacedesires.in');
-    $mail->addReplyTo($email, $firstName . ' ' . $lastName);
+// Headers
+$headers  = "From: noreply@spacedesire.in\r\n";
+$headers .= "Reply-To: {$email}\r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
 
-    // Content
-    $mail->isHTML(true);
-    $mail->Subject = 'New Free Estimate Request';
-
-    $mail->Body = "
-        <h3>New Estimate Request</h3>
-        <p><strong>Name:</strong> {$firstName} {$lastName}</p>
-        <p><strong>Email:</strong> {$email}</p>
-        <p><strong>Phone:</strong> {$phone}</p>
-        <p><strong>Location:</strong> {$location}</p>
-        <p><strong>Message:</strong><br>{$message}</p>
-    ";
-
-    $mail->send();
+// Send mail
+if (mail($to, $subject, $body, $headers)) {
     echo "success";
-
-} catch (Exception $e) {
+} else {
     echo "error";
 }
